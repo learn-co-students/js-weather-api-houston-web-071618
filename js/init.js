@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var API_KEY = "Go get an API key";
-  var CORS_WRAPPER = "https://cors-anywhere.herokuapp.com/"
-  var URL = CORS_WRAPPER + "http://api.wunderground.com/api/" + API_KEY + "/hourly/q/NY/New_York.json";
-  var ctx = document.getElementById("NYCWeatherChart").getContext("2d")
+  const ctx = document.getElementById("HOUWeatherChart").getContext("2d")
+  const API_KEY = "4225cdc2fed2b88c1fedeaa3e0369224";
+  const CORS_WRAPPER = "https://cors-anywhere.herokuapp.com/"
+  const URL = CORS_WRAPPER + "https://api.darksky.net/forecast/" + API_KEY + "/29.8005,-95.3995?exclude=currently,minutely,daily";
 
-
-  makeRequest(URL, function(json) {
-    var data = generateDataSet(getHours(json), getFahrenheits(json));
-    var tempChart = new Chart(ctx).Line(data, { bezierCurve: true });
-  });
+  // make your fetch in the makeRequest function in weatherChart.js
+  makeRequest(URL, ctx)
 });
