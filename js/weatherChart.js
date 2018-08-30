@@ -38,12 +38,14 @@ function getFahrenheit(result) {
 
 function getHour(result) {
  // Your code goes here
-
+ //debugger
  return result.hourly.data.map(function(element) {
+
    let myDate = new Date(element.time * 1000);
    return myDate.getHours();
+
  });
- return newArr;
+
 }
 
 function generateDataSet(labels, data) {
@@ -73,7 +75,7 @@ function makeRequest(endpoint, canvas) {
     return response.json();
   })
   .then(function(hourlyData){
-    console.log(hourlyData)
+    //console.log(hourlyData)
     const tempChart = new Chart(canvas, generateDataSet(getHour(hourlyData), getFahrenheit(hourlyData)))
   })
 
