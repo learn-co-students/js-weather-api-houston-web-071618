@@ -36,9 +36,9 @@ describe('weatherChart', () => {
     });
 
     it("returns a list of hours", () => {
-      expect(getHour(dummyData)).toEqual([18,19,20,21,22,23,0,1,2,3
+      expect(getHour(dummyData)).toEqual([17, 18,19,20,21,22,23,0,1,2,3
         ,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,
-        2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]);
+        2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]);
     });
   })
 
@@ -58,7 +58,7 @@ describe('weatherChart', () => {
     })
 
     it('fetches the create fork api', () => {
-      const ctx = document.getElementById("NYCWeatherChart").getContext("2d");
+      const ctx = document.getElementById("HOUWeatherChart").getContext("2d");
       var API_KEY = "Go get an API key";
       const CORS_WRAPPER = "https://cors-anywhere.herokuapp.com/"
       const URL = CORS_WRAPPER + "https://api.darksky.net/forecast/" + API_KEY + "/40.7127,-74.0059?exclude=currently,minutely,daily";
