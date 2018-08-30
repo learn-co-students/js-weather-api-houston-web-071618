@@ -1,9 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById("NYCWeatherChart").getContext("2d")
-  const API_KEY = "Go get an API key";
-  const CORS_WRAPPER = "https://cors-anywhere.herokuapp.com/"
-  const URL = CORS_WRAPPER + "https://api.darksky.net/forecast/" + API_KEY + "/40.7127,-74.0059?exclude=currently,minutely,daily";
+document.addEventListener("DOMContentLoaded", function() {
+  const ctx = document.getElementById("NYCWeatherChart").getContext("2d");
+  const API_KEY = "bc05c6c9c57f00fc2b06f00449c7e9b7";
+  const CORS_WRAPPER = "https://cors-anywhere.herokuapp.com/";
+  const URL =
+    CORS_WRAPPER +
+    "https://api.darksky.net/forecast/" +
+    API_KEY +
+    "/40.7127,-74.0059?exclude=currently,minutely,daily";
 
   // make your fetch in the makeRequest function in weatherChart.js
-  makeRequest(URL, ctx)
+  makeRequest(URL, ctx);
 });
