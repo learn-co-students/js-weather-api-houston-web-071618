@@ -1,9 +1,18 @@
+const hourly = document.getElementById("hourly");
+console.log("hourly information");
+
 function getFahrenheit(result){
-  // Your code goes here
+  console.log(result);
+  let vari = result.map(data => (data.temperature));
+  console.log(vari)
+  return vari
 }
 
 function getHour(result){
-  // Your code goes here
+  console.log(result);
+  let returnVariable = result.map(panda => new Date(panda.time * 1000).getHours())
+  console.log(returnVariable)
+  return returnVariable
 }
 
 function generateDataSet(labels, data) {
@@ -28,7 +37,15 @@ function generateDataSet(labels, data) {
 
 function makeRequest(endpoint, canvas) {
   // Your code goes here
+  fetch(endpoint)
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(myJson) {
+      let hourlyData = myJson.hourly.data
 
+      const tempChart = new Chart(canvas, generateDataSet(getHour(hourlyData), getFahrenheit(hourlyData)))
+    });
   // After your fetch works - use your json data with the line below :)
   // const tempChart = new Chart(canvas, generateDataSet(getHour(hourlyData), getFahrenheit(hourlyData)))
 }
