@@ -1,9 +1,12 @@
-function getFahrenheit(result){
-  // Your code goes here
+function getFahrenheit(result) {
+  return result.map(hourlyObj => hourlyObj["temperature"])  
 }
 
 function getHour(result){
-  // Your code goes here
+  return result.map( hourlyObj => {
+    let date = new Date(hourlyObj["time"] * 1000)
+    return date.getHours()
+  })
 }
 
 function generateDataSet(labels, data) {
@@ -13,7 +16,7 @@ function generateDataSet(labels, data) {
       labels: labels,
       datasets: [
         {
-          label: "NYC Weather Data",
+          label: "Bayou City Weather Data",
           data: data,
           backgroundColor: "rgba(100,150,220,0.2)",
           borderColor: 'rgb(255, 99, 132)'
@@ -27,8 +30,12 @@ function generateDataSet(labels, data) {
 }
 
 function makeRequest(endpoint, canvas) {
-  // Your code goes here
-
-  // After your fetch works - use your json data with the line below :)
-  // const tempChart = new Chart(canvas, generateDataSet(getHour(hourlyData), getFahrenheit(hourlyData)))
+  fetch(endpoint)
+    .then(res => res.json())
+    // .then(data => getHour(data["hourly"]["data"]))
+    // .then(console.log)
+    .then(data => {
+      let hourlyData = data["hourly"]["data"]  
+      const tempChart = new Chart(canvas, generateDataSet(getHour(hourlyData), getFahrenheit(hourlyData)))  
+    })
 }
