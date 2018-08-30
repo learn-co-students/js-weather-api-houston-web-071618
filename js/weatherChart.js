@@ -1,5 +1,5 @@
 function getFahrenheit(result){
-  // Your code goes here
+  // Your code goes herec
   return result.map(function(hour){
     return hour.temperature
   })
